@@ -1,0 +1,74 @@
+
+										****SECURE FILE UPLOAD SYSTEM DOCUMENTATION****
+
+Table of Contents
+
+	1.Introduction
+	2.Requirements
+	3.Installation
+			Database Setup
+			Server Configuration
+	4.Usage
+			User Authentication
+			File Upload
+	5.Testing
+			Successful Upload
+			Rejected Upload
+	6.Security Considerations
+	
+1.Introduction
+
+This document provides instructions on how to use and test the secure file upload system. 
+The system is developed in PHP and includes robust security measures to safeguard against malicious uploads and potential attacks.
+
+
+2. Requirements
+
+PHP (version 7 or higher)
+MySQL or any other compatible database
+Web server (e.g., Apache, Nginx)
+
+
+3. Installation
+
+ i)Database Setup
+	Create a MySQL database and tables using the provided SQL scripts (user.sql, uploads.sql, logs.sql).
+	Update the database connection details in config.php.
+ ii)Server Configuration
+	Ensure that the server has PHP installed.
+	Configure the web server to point to the root directory of the application.
+	Set up appropriate permissions for the file upload directory (/path/to/secure/upload/directory/). The web server should have write permissions to this directory.
+	
+	
+4.Usage
+
+ i)User Authentication
+	Ensure that user authentication is implemented in your application before attempting to upload a file.
+	After successful authentication, the user's session should be set with the relevant information ($_SESSION['username'], $_SESSION['password']).
+ ii)File Upload
+	Access the file upload form through the web browser.
+	Choose a file with a valid extension (.jpg, .png, .pdf, .docx) and within the size limit.
+	Submit the form to initiate the file upload process.
+	Review the upload status message.
+	
+	
+5.Testing
+ i)Successful Upload
+	Authenticate as a valid user.
+	Upload a file with a valid extension and within the size limit.
+	Verify that the file is successfully uploaded.
+	Check the uploads table in the database for the new entry.
+	Review the logs table for a corresponding successful upload log.
+ii)Rejected Upload
+	Authenticate as a valid user.
+	Attempt to upload a file with an invalid extension or exceeding the size limit.
+	Verify that the upload is rejected with an appropriate error message.
+	Check the logs table for a corresponding rejected upload log.
+
+
+6.Security Considerations
+
+Ensure that the file upload directory is outside the web server's root directory.
+Regularly monitor and review logs for any suspicious or rejected uploads.
+Implement additional security measures as needed based on your application's requirements.
+Regularly update and patch your server software and PHP installation.
